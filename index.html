@@ -7,11 +7,11 @@
     <script src="gestures.js"></script>
     <script>
 
-      AFRAME.registerComponent('markerhandler', {
+      AFRAME.registerComponent("markerhandler", {
       init: function () {
-        this.el.sceneEl.addEventListener('click', () => {
+        this.el.sceneEl.addEventListener("click", () => {
           // redirect to custom URL e.g. google.com
-          window.location = 'https://www.google.com/';
+          window.location = "https://www.google.com/";
         })
       }
       });
