@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <script src="aframe.min.js"></script>
+    <!-- we import arjs version without NFT but with marker + location based support -->
+    <script src="aframe-ar.js"></script>
+    <script src="https://unpkg.com/aframe-text-geometry-component@^0.5.0/dist/aframe-text-geometry-component.min.js"></script>
+    <script src="gestures.js"></script>
+    <script>
+      /*
+      AFRAME.registerComponent('markerhandler', {
+      init: function () {
+        this.el.sceneEl.addEventListener('markerFound', () => {
+          // redirect to custom URL e.g. google.com
+          window.location = 'https://www.google.com/';
+        })
+      }
+      });
+      */
+    </script>
+    <body style="margin : 0px; overflow: hidden;">
+        <a-scene embedded arjs gesture-detector vr-mode-ui="enabled: false" id="scene">
+          <a-assets>
+              <a-asset-item id="RobotoBoldFont" src="fonts/Roboto_Bold.json"></a-asset-item>
+          </a-assets>
+        <a-marker type="pattern" url="pattern-TestCode123.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;" id="markerA">
+            <!-- we use cors proxy to avoid cross-origin problems ATTENTION! you need to set up your server -->
+            <a-entity
+              position="0 -1 0"
+              scale="0.5 0.5 0.5"
+              gltf-model="models/WaterBottle.glb"
+              animation="property: rotation; to: 0 360 0; loop: true; dur: 10000"
+              class="clickable"
+              gesture-handler>
+
+              <a-entity text-geometry="value: TEST" position = "-1 1 1" id="testText"></a-entity>
+            </a-entity>
+        </a-marker>
+        <a-entity camera></a-entity>
+        </a-scene>
+    </body>
+</html>
